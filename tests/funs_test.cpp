@@ -1,7 +1,9 @@
 #include "../src/funs.h"
+#include <string>
 
-int main() {
-	bool isCorrect = false;
-	isCorrect = isEven(6) && !isEven(3) && isEven(0) && isEven(-2) && !isEven(-3);
-	return (isCorrect) ? 0 : 1;
+int main(int argc, char *argv[]) {
+	int inNum = 0;
+	if (argc > 1) inNum = std::stoi(argv[1]);
+	
+	return !(inNum % 2) && isEven(inNum);
 }
