@@ -1,0 +1,7 @@
+on: push
+
+jobs:
+  jobname:
+    - runs-on: ubuntu-latest
+    - run: echo "Hello from my CI!"
+ 
