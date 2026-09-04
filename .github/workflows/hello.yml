@@ -2,6 +2,6 @@ on: push
 
 jobs:
   jobname:
-    - runs-on: ubuntu-latest
-    - run: echo "Hello from my CI!"
- 
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo "Hello from my CI!"
