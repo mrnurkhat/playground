@@ -4,6 +4,6 @@
 int main(int argc, char *argv[]) {
 	int inNum = 0;
 	if (argc > 1) inNum = std::stoi(argv[1]);
-	
-	return !(inNum % 2) && isEven(inNum);
+	bool isPassed = !(inNum % 2) == isEven(inNum);
+	return (isPassed) ? 0 : 1;
 }
