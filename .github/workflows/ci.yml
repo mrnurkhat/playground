@@ -1,9 +1,17 @@
 on: push
 jobs:
-  build:
+  build-gcc:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - run: cmake -B build
       - run: cmake --build build
       - run: ctest --test-dir build
+
+  build-clang: 
+   runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v7
+      - run: cmake-B build -DCMAKE_CXX_COMPILER=clang++
+      - run: cmake --build build
+      - run: ctest --test-dir build 
