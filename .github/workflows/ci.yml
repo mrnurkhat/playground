@@ -18,7 +18,7 @@ jobs:
   build-clang:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/upload-artifact@v7
+      - uses: actions/checkout@v4
       - run: sudo apt update && sudo apt install clang
       - run: cmake -B build -DCMAKE_CXX_COMPILER=clang++
       - run: cmake --build build
