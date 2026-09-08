@@ -3,16 +3,29 @@ jobs:
   build-gcc:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
       - run: cmake -B build
       - run: cmake --build build
       - run: ctest --test-dir build
+      - run: tar -cvf cicd_gcc.tar build/cicd_target
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gcc-build-archive
+          path: cicd_gcc.tar
+
 
   build-clang:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/upload-artifact@v7
       - run: sudo apt update && sudo apt install clang
       - run: cmake -B build -DCMAKE_CXX_COMPILER=clang++
       - run: cmake --build build
       - run: ctest --test-dir build
+      - run: tar -cvf cicd_clang.tar build/cicd_target
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: clang-build-archive
+          path: cicd_clang.tar
